@@ -25,8 +25,8 @@ export default function ProductDetail() {
       <div className="min-h-screen flex flex-col">
         <Header />
         <div className="flex-1 flex flex-col items-center justify-center gap-4">
-          <h2 className="font-oswald text-2xl text-[#392F3B]">Товар не найден</h2>
-          <Link to="/shop" className="bg-[#E4610F] text-white px-6 py-2.5 rounded-lg font-oswald font-bold uppercase hover:bg-[#c9510c] transition-colors">
+          <h2 className="font-marmelad text-2xl text-[#392F3B]">Товар не найден</h2>
+          <Link to="/shop" className="bg-[#E4610F] text-white px-6 py-2.5 rounded-lg font-marmelad font-bold uppercase hover:bg-[#c9510c] transition-colors">
             Вернуться в магазин
           </Link>
         </div>
@@ -62,7 +62,7 @@ export default function ProductDetail() {
                 className="w-full aspect-[4/5] object-contain animate-scale-in"
               />
               {product.badge && (
-                <span className={`absolute top-3 left-3 ${BADGE_CLASSES[product.badge]} text-sm font-oswald font-bold uppercase px-3 py-1 rounded`}>
+                <span className={`absolute top-3 left-3 ${BADGE_CLASSES[product.badge]} text-sm font-marmelad font-bold uppercase px-3 py-1 rounded`}>
                   {product.badge}
                 </span>
               )}
@@ -98,22 +98,22 @@ export default function ProductDetail() {
 
           {/* Right — info */}
           <div className="flex flex-col gap-4">
-            <h1 className="font-oswald font-bold text-[#392F3B] text-3xl md:text-4xl leading-tight">
+            <h1 className="font-marmelad font-bold text-[#392F3B] text-3xl md:text-4xl leading-tight">
               {product.title}
             </h1>
 
             {/* Price */}
             <div className="flex items-baseline gap-3">
-              <span className="font-oswald font-bold text-[#E4610F] text-3xl">{product.price} ₽</span>
+              <span className="font-marmelad font-bold text-[#E4610F] text-3xl">{product.price} ₽</span>
               {product.oldPrice && (
-                <span className="text-[#cbbfce] text-lg line-through font-golos">{product.oldPrice} ₽</span>
+                <span className="text-[#cbbfce] text-lg line-through font-snpro">{product.oldPrice} ₽</span>
               )}
             </div>
 
             {/* Add to cart button */}
             <button
               onClick={handleAdd}
-              className={`flex items-center justify-center gap-2 py-3 px-8 rounded-xl font-oswald font-bold uppercase tracking-wide text-[#19031D] border-2 transition-all w-fit ${
+              className={`flex items-center justify-center gap-2 py-3 px-8 rounded-xl font-marmelad font-bold uppercase tracking-wide text-[#19031D] border-2 transition-all w-fit ${
                 added
                   ? "bg-[#4FB282] border-[#4FB282] text-white"
                   : "bg-[#FFEC5C] border-[#FFEC5C] hover:bg-[#e8d700] hover:border-[#e8d700]"
@@ -124,15 +124,15 @@ export default function ProductDetail() {
             </button>
 
             {/* Full description */}
-            <div className="text-[#756977] font-golos leading-relaxed text-sm">
+            <div className="text-[#756977] font-snpro leading-relaxed text-sm">
               <p>{product.fullDesc}</p>
             </div>
 
             {/* Authors */}
             {product.authors.length > 0 && (
               <div>
-                <p className="font-golos text-[#392F3B] font-medium mb-1">Внутри вас ждут истории от:</p>
-                <p className="font-golos text-sm text-[#E4610F]">
+                <p className="font-snpro text-[#392F3B] font-medium mb-1">Внутри вас ждут истории от:</p>
+                <p className="font-snpro text-sm text-[#E4610F]">
                   {product.authors.join(", ")}
                 </p>
               </div>
@@ -140,21 +140,21 @@ export default function ProductDetail() {
 
             {/* Specs */}
             <div>
-              <p className="font-golos text-[#392F3B] font-medium mb-2">Характеристики:</p>
+              <p className="font-snpro text-[#392F3B] font-medium mb-2">Характеристики:</p>
               <ul className="space-y-1">
                 {product.specs.map((s) => (
-                  <li key={s} className="text-[#756977] font-golos text-sm">— {s}</li>
+                  <li key={s} className="text-[#756977] font-snpro text-sm">— {s}</li>
                 ))}
               </ul>
             </div>
 
             {/* Cover author */}
-            <p className="text-[#756977] font-golos text-sm">
+            <p className="text-[#756977] font-snpro text-sm">
               <span className="text-[#392F3B] font-medium">Автор обложки:</span> {product.coverAuthor}
             </p>
 
             {/* Tags */}
-            <p className="text-[#756977] font-golos text-sm">
+            <p className="text-[#756977] font-snpro text-sm">
               <span className="text-[#392F3B] font-medium">Теги:</span> {product.tags.join(", ")}
             </p>
           </div>

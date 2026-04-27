@@ -22,7 +22,7 @@ function Field({ label, required, type = "text", value, onChange, error, placeho
 }) {
   return (
     <div className="flex flex-col gap-1">
-      <label className="font-golos text-sm text-[#392F3B] font-medium">
+      <label className="font-snpro text-sm text-[#392F3B] font-medium">
         {label}{required && <span className="text-[#E4610F]"> *</span>}
       </label>
       <input
@@ -30,11 +30,11 @@ function Field({ label, required, type = "text", value, onChange, error, placeho
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className={`px-3 py-2.5 border rounded-lg font-golos text-sm text-[#392F3B] focus:outline-none transition-colors ${
+        className={`px-3 py-2.5 border rounded-lg font-snpro text-sm text-[#392F3B] focus:outline-none transition-colors ${
           error ? "border-[#E4610F] bg-[#fff5f0]" : "border-[#e8e2ea] focus:border-[#E4610F]"
         }`}
       />
-      {error && <span className="text-[#E4610F] text-xs font-golos">Обязательное поле</span>}
+      {error && <span className="text-[#E4610F] text-xs font-snpro">Обязательное поле</span>}
     </div>
   );
 }
@@ -86,13 +86,13 @@ export default function Checkout() {
       <Header />
       <div className="brand-container py-6 flex-1">
         <Breadcrumbs crumbs={[{ label: "Корзина", href: "/cart" }, { label: "Оформление заказа" }]} />
-        <h1 className="font-oswald font-bold text-[#392F3B] text-3xl mt-6 mb-8">Оформление заказа</h1>
+        <h1 className="font-marmelad font-bold text-[#392F3B] text-3xl mt-6 mb-8">Оформление заказа</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-6">
             {/* Contact form */}
             <div className="border border-[#e8e2ea] rounded-xl p-6">
-              <h2 className="font-oswald font-bold text-[#392F3B] text-xl mb-5">Контактные данные</h2>
+              <h2 className="font-marmelad font-bold text-[#392F3B] text-xl mb-5">Контактные данные</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Field label="Страна" required value={form.country} onChange={f("country")} />
                 <Field label="Имя" required value={form.name} onChange={f("name")} error={errors.name} />
@@ -112,7 +112,7 @@ export default function Checkout() {
                 >
                   {createProfile && <Icon name="Check" size={12} className="text-white" />}
                 </div>
-                <span className="font-golos text-sm text-[#756977]">Создать профиль для отслеживания заказов</span>
+                <span className="font-snpro text-sm text-[#756977]">Создать профиль для отслеживания заказов</span>
               </label>
 
               {createProfile && (
@@ -128,7 +128,7 @@ export default function Checkout() {
 
             {/* Delivery */}
             <div className="border border-[#e8e2ea] rounded-xl p-6">
-              <h2 className="font-oswald font-bold text-[#392F3B] text-xl mb-5">Способ доставки</h2>
+              <h2 className="font-marmelad font-bold text-[#392F3B] text-xl mb-5">Способ доставки</h2>
               <div className="space-y-3">
                 {DELIVERY_OPTIONS.map((opt) => (
                   <label key={opt.id} className={`flex items-center gap-4 p-4 border-2 rounded-xl cursor-pointer transition-all ${delivery === opt.id ? "border-[#E4610F] bg-[#fff8f5]" : "border-[#e8e2ea] hover:border-[#E4610F]/50"}`}>
@@ -137,18 +137,18 @@ export default function Checkout() {
                       {delivery === opt.id && <div className="w-2.5 h-2.5 rounded-full bg-[#E4610F]" />}
                     </div>
                     <div className="flex-1">
-                      <div className="font-oswald font-semibold text-[#392F3B]">{opt.label}</div>
-                      <div className="text-[#756977] font-golos text-sm">{opt.desc}</div>
+                      <div className="font-marmelad font-semibold text-[#392F3B]">{opt.label}</div>
+                      <div className="text-[#756977] font-snpro text-sm">{opt.desc}</div>
                     </div>
-                    <span className="font-oswald font-bold text-[#E4610F]">{opt.price} ₽</span>
+                    <span className="font-marmelad font-bold text-[#E4610F]">{opt.price} ₽</span>
                   </label>
                 ))}
               </div>
 
               {delivery === "sdek" && (
                 <div className="mt-5">
-                  <h3 className="font-oswald font-semibold text-[#392F3B] mb-3">Выберите пункт выдачи:</h3>
-                  {errors.pvz && <p className="text-[#E4610F] text-xs font-golos mb-2">Выберите ПВЗ</p>}
+                  <h3 className="font-marmelad font-semibold text-[#392F3B] mb-3">Выберите пункт выдачи:</h3>
+                  {errors.pvz && <p className="text-[#E4610F] text-xs font-snpro mb-2">Выберите ПВЗ</p>}
                   <div className="space-y-2">
                     {SDEK_PVZ.map((p) => (
                       <div
@@ -159,9 +159,9 @@ export default function Checkout() {
                         <div className="flex items-start gap-2">
                           <Icon name="MapPin" size={14} className="text-[#E4610F] mt-0.5 shrink-0" />
                           <div>
-                            <p className="font-golos font-medium text-[#392F3B] text-sm">{p.address}</p>
-                            <p className="text-[#756977] font-golos text-xs mt-1">{p.hours}</p>
-                            <p className="text-[#756977] font-golos text-xs">{p.metro} · {p.phone}</p>
+                            <p className="font-snpro font-medium text-[#392F3B] text-sm">{p.address}</p>
+                            <p className="text-[#756977] font-snpro text-xs mt-1">{p.hours}</p>
+                            <p className="text-[#756977] font-snpro text-xs">{p.metro} · {p.phone}</p>
                           </div>
                         </div>
                       </div>
@@ -184,7 +184,7 @@ export default function Checkout() {
                   >
                     {state && <Icon name="Check" size={12} className="text-white" />}
                   </div>
-                  <span className="font-golos text-sm text-[#756977]">{label} <span className="text-[#E4610F]">*</span></span>
+                  <span className="font-snpro text-sm text-[#756977]">{label} <span className="text-[#E4610F]">*</span></span>
                 </label>
               ))}
             </div>
@@ -193,20 +193,20 @@ export default function Checkout() {
           {/* Order summary */}
           <div>
             <div className="border border-[#e8e2ea] rounded-xl p-6 sticky top-24">
-              <h2 className="font-oswald font-bold text-[#392F3B] text-xl mb-5">Ваш заказ</h2>
+              <h2 className="font-marmelad font-bold text-[#392F3B] text-xl mb-5">Ваш заказ</h2>
               <div className="space-y-3 mb-5">
                 {items.map((item) => (
                   <div key={item.id} className="flex gap-3">
                     <img src={item.image} alt={item.title} className="w-12 h-16 object-cover rounded" />
                     <div className="flex-1">
-                      <p className="font-golos text-sm text-[#392F3B] font-medium leading-tight">{item.title}</p>
-                      <p className="font-golos text-xs text-[#756977] mt-1">{item.qty} × {item.price} ₽</p>
+                      <p className="font-snpro text-sm text-[#392F3B] font-medium leading-tight">{item.title}</p>
+                      <p className="font-snpro text-xs text-[#756977] mt-1">{item.qty} × {item.price} ₽</p>
                     </div>
-                    <span className="font-oswald font-bold text-[#392F3B]">{item.price * item.qty} ₽</span>
+                    <span className="font-marmelad font-bold text-[#392F3B]">{item.price * item.qty} ₽</span>
                   </div>
                 ))}
               </div>
-              <div className="border-t border-[#e8e2ea] pt-4 space-y-2 font-golos text-sm text-[#756977]">
+              <div className="border-t border-[#e8e2ea] pt-4 space-y-2 font-snpro text-sm text-[#756977]">
                 <div className="flex justify-between">
                   <span>Товары</span>
                   <span className="text-[#392F3B]">{total} ₽</span>
@@ -215,7 +215,7 @@ export default function Checkout() {
                   <span>Доставка ({deliveryOption.label})</span>
                   <span className="text-[#392F3B]">{deliveryOption.price} ₽</span>
                 </div>
-                <div className="flex justify-between font-oswald font-bold text-[#392F3B] text-lg pt-2 border-t border-[#e8e2ea]">
+                <div className="flex justify-between font-marmelad font-bold text-[#392F3B] text-lg pt-2 border-t border-[#e8e2ea]">
                   <span>Итого</span>
                   <span className="text-[#E4610F]">{orderTotal} ₽</span>
                 </div>
@@ -223,14 +223,14 @@ export default function Checkout() {
               <button
                 onClick={handleSubmit}
                 disabled={!canSubmit}
-                className={`mt-5 w-full flex items-center justify-center gap-2 py-3 rounded-lg font-oswald font-bold uppercase tracking-wide text-white transition-all ${
+                className={`mt-5 w-full flex items-center justify-center gap-2 py-3 rounded-lg font-marmelad font-bold uppercase tracking-wide text-white transition-all ${
                   canSubmit ? "bg-[#E4610F] hover:bg-[#c9510c] hover:-translate-y-0.5 cursor-pointer" : "bg-[#cbbfce] cursor-not-allowed"
                 }`}
               >
                 <Icon name="CreditCard" size={18} />
                 Перейти к оплате
               </button>
-              <p className="text-[#cbbfce] font-golos text-xs text-center mt-3">Оплата картой, ЮKassa и другими способами</p>
+              <p className="text-[#cbbfce] font-snpro text-xs text-center mt-3">Оплата картой, ЮKassa и другими способами</p>
             </div>
           </div>
         </div>

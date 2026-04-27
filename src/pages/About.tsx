@@ -24,10 +24,10 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
           {/* Left: text */}
           <div>
-            <h1 className="font-oswald font-bold text-[#392F3B] text-4xl md:text-5xl mb-2">О нас</h1>
+            <h1 className="font-marmelad font-bold text-[#392F3B] text-4xl md:text-5xl mb-2">О нас</h1>
             <Breadcrumbs crumbs={[{ label: "О нас" }]} />
 
-            <div className="space-y-4 text-[#756977] font-golos leading-relaxed text-sm mt-6">
+            <div className="space-y-4 text-[#756977] font-snpro leading-relaxed text-sm mt-6">
               <p>
                 <strong className="text-[#392F3B]">KRAS COMICS CULT</strong> — это небольшое самиздательство и
                 сообщество художников и авторов комиксов, которое базируется в Красноярске.
@@ -46,7 +46,7 @@ export default function About() {
 
             {/* Social icons */}
             <div className="mt-6">
-              <p className="font-golos text-[#392F3B] font-medium text-sm mb-3">Наши соцсети:</p>
+              <p className="font-snpro text-[#392F3B] font-medium text-sm mb-3">Наши соцсети:</p>
               <div className="flex items-center gap-4">
                 <a href="#" aria-label="Telegram" className="text-[#392F3B] hover:text-[#E4610F] transition-colors">
                   <Icon name="Send" size={22} />
@@ -82,7 +82,7 @@ export default function About() {
       {/* Team section — dark bg */}
       <section style={{ backgroundColor: "#19031D" }} className="py-14">
         <div className="brand-container">
-          <h2 className="font-oswald font-bold text-white text-3xl text-center mb-10">Команда</h2>
+          <h2 className="font-marmelad font-bold text-white text-3xl text-center mb-10">Команда</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {TEAM.map((m, i) => (
               <div key={i} className="rounded-xl overflow-hidden flex flex-col" style={{ backgroundColor: "#2a0d30" }}>
@@ -93,8 +93,8 @@ export default function About() {
                 />
                 {/* Info */}
                 <div className="p-4">
-                  <h3 className="font-oswald font-bold text-white text-base">{m.name}</h3>
-                  <p className="text-[#a895ad] font-golos text-xs mt-1 leading-snug">{m.role}</p>
+                  <h3 className="font-marmelad font-bold text-white text-base">{m.name}</h3>
+                  <p className="text-[#a895ad] font-snpro text-xs mt-1 leading-snug">{m.role}</p>
                 </div>
               </div>
             ))}

@@ -15,14 +15,14 @@ export default function Delivery() {
       <div className="brand-container py-6 flex-1">
         <Breadcrumbs crumbs={[{ label: "Оплата и доставка" }]} />
         <div className="max-w-3xl mt-8 mb-12">
-          <h1 className="font-oswald font-bold text-[#392F3B] text-4xl md:text-5xl mb-8">Оплата и доставка</h1>
+          <h1 className="font-marmelad font-bold text-[#392F3B] text-4xl md:text-5xl mb-8">Оплата и доставка</h1>
 
           {/* Payment */}
           <section className="mb-10">
-            <h2 className="font-oswald font-bold text-[#392F3B] text-2xl mb-4 flex items-center gap-2">
+            <h2 className="font-marmelad font-bold text-[#392F3B] text-2xl mb-4 flex items-center gap-2">
               <Icon name="CreditCard" size={22} className="text-[#E4610F]" /> Оплата
             </h2>
-            <div className="space-y-3 text-[#756977] font-golos leading-relaxed">
+            <div className="space-y-3 text-[#756977] font-snpro leading-relaxed">
               <p>Принимаем оплату банковской картой (Visa, Mastercard, МИР) через безопасный платёжный шлюз ЮKassa.</p>
               <p>Все транзакции защищены SSL-шифрованием. Данные карт не хранятся на нашем сайте.</p>
               <p>Оплата происходит в момент оформления заказа. После успешной оплаты вы получите подтверждение на e-mail.</p>
@@ -31,7 +31,7 @@ export default function Delivery() {
 
           {/* Shipping */}
           <section className="mb-10">
-            <h2 className="font-oswald font-bold text-[#392F3B] text-2xl mb-4 flex items-center gap-2">
+            <h2 className="font-marmelad font-bold text-[#392F3B] text-2xl mb-4 flex items-center gap-2">
               <Icon name="Package" size={22} className="text-[#E4610F]" /> Доставка
             </h2>
             <div className="space-y-4">
@@ -43,10 +43,10 @@ export default function Delivery() {
                 <div key={d.title} className="flex items-start gap-4 p-4 border border-[#e8e2ea] rounded-xl hover:border-[#E4610F]/50 transition-colors">
                   <Icon name={d.icon as "Mail"} size={22} className="text-[#8A5298] mt-0.5 shrink-0" />
                   <div className="flex-1">
-                    <h3 className="font-oswald font-semibold text-[#392F3B]">{d.title}</h3>
-                    <p className="text-[#756977] font-golos text-sm mt-1">{d.time}</p>
+                    <h3 className="font-marmelad font-semibold text-[#392F3B]">{d.title}</h3>
+                    <p className="text-[#756977] font-snpro text-sm mt-1">{d.time}</p>
                   </div>
-                  <span className="font-oswald font-bold text-[#E4610F]">{d.price}</span>
+                  <span className="font-marmelad font-bold text-[#E4610F]">{d.price}</span>
                 </div>
               ))}
             </div>
@@ -54,15 +54,15 @@ export default function Delivery() {
 
           {/* Pickup */}
           <section>
-            <h2 className="font-oswald font-bold text-[#392F3B] text-2xl mb-4 flex items-center gap-2">
+            <h2 className="font-marmelad font-bold text-[#392F3B] text-2xl mb-4 flex items-center gap-2">
               <Icon name="MapPin" size={22} className="text-[#E4610F]" /> Самовывоз в Красноярске
             </h2>
             <div className="space-y-4">
               {PICKUP.map((p, i) => (
                 <div key={i} className="p-4 bg-[#faf8fb] border border-[#e8e2ea] rounded-xl">
-                  <p className="font-oswald font-semibold text-[#392F3B]">{p.address}</p>
-                  <p className="text-[#756977] font-golos text-sm mt-1">{p.desc}</p>
-                  <p className="text-[#8A5298] font-golos text-sm font-medium mt-1 flex items-center gap-1">
+                  <p className="font-marmelad font-semibold text-[#392F3B]">{p.address}</p>
+                  <p className="text-[#756977] font-snpro text-sm mt-1">{p.desc}</p>
+                  <p className="text-[#8A5298] font-snpro text-sm font-medium mt-1 flex items-center gap-1">
                     <Icon name="Clock" size={13} /> {p.hours}
                   </p>
                 </div>

@@ -25,12 +25,12 @@ export default function Header() {
       <div className="brand-container">
         <div className="flex items-center justify-between h-16 md:h-[72px]">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 shrink-0">
-            <div className="flex flex-col leading-none select-none">
-              <span className="font-oswald font-bold text-[#19031D] text-base tracking-tight">KRAS</span>
-              <span className="font-oswald font-bold text-[#19031D] text-base tracking-tight">COMICS</span>
-              <span style={{ color: "#E4610F" }} className="font-oswald font-bold text-base tracking-tight">CULT</span>
-            </div>
+          <Link to="/" className="flex items-center shrink-0">
+            <img
+              src="https://cdn.poehali.dev/projects/aa90fb18-9c44-4119-9ae6-bbc72afdf0be/bucket/d70f93e0-cc84-4c9b-9944-901a6ed4347a.png"
+              alt="KRAS COMICS CULT"
+              className="h-10 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop nav */}
@@ -39,7 +39,7 @@ export default function Header() {
               <Link
                 key={l.href}
                 to={l.href}
-                className="font-oswald font-semibold text-sm uppercase tracking-wide text-[#19031D] hover:text-[#E4610F] transition-colors"
+                className="font-marmelad font-semibold text-sm uppercase tracking-wide text-[#19031D] hover:text-[#E4610F] transition-colors"
               >
                 {l.label}
               </Link>
@@ -50,20 +50,22 @@ export default function Header() {
           <div className="hidden md:flex items-center gap-5">
             {isAuth ? (
               <Link to="/profile" className="flex items-center gap-2 text-[#19031D] hover:text-[#E4610F] transition-colors">
-                <div className="w-8 h-8 rounded-full bg-[#8A5298] flex items-center justify-center">
-                  <Icon name="User" size={16} className="text-white" />
-                </div>
-                <span className="font-golos text-sm font-medium">Культист А.К.</span>
+                <img
+                  src="https://cdn.poehali.dev/projects/aa90fb18-9c44-4119-9ae6-bbc72afdf0be/bucket/8f379e20-b105-457e-a37d-6ffeaab0a7c8.png"
+                  alt="Профиль"
+                  className="w-8 h-8 rounded-full object-cover"
+                />
+                <span className="font-snpro text-sm font-medium">Культист А.К.</span>
                 <Icon name="ChevronDown" size={14} className="text-[#19031D]" />
               </Link>
             ) : (
-              <Link to="/login" className="font-oswald text-sm uppercase tracking-wide font-semibold text-[#19031D] hover:text-[#E4610F] transition-colors">
+              <Link to="/login" className="font-marmelad text-sm uppercase tracking-wide font-semibold text-[#19031D] hover:text-[#E4610F] transition-colors">
                 Войти
               </Link>
             )}
             <Link to="/cart" className="flex items-center gap-2 text-[#19031D] hover:text-[#E4610F] transition-colors relative">
               <Icon name="ShoppingCart" size={20} className="text-[#19031D]" />
-              <span className="font-golos text-sm font-medium">
+              <span className="font-snpro text-sm font-medium">
                 Корзина{count > 0 ? ` ( ${count} )` : ""}
               </span>
             </Link>
@@ -99,7 +101,7 @@ export default function Header() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between p-5 border-b border-[#e8d700]">
-              <span className="font-oswald text-[#19031D] font-bold text-lg">МЕНЮ</span>
+              <span className="font-marmelad text-[#19031D] font-bold text-lg">МЕНЮ</span>
               <button onClick={() => setMenuOpen(false)} className="text-[#19031D]">
                 <Icon name="X" size={24} />
               </button>
@@ -110,7 +112,7 @@ export default function Header() {
                   key={l.href}
                   to={l.href}
                   onClick={() => setMenuOpen(false)}
-                  className="font-oswald text-lg uppercase tracking-wide py-3 border-b border-[#e8d700] text-[#19031D] hover:text-[#E4610F] transition-colors"
+                  className="font-marmelad text-lg uppercase tracking-wide py-3 border-b border-[#e8d700] text-[#19031D] hover:text-[#E4610F] transition-colors"
                 >
                   {l.label}
                 </Link>
@@ -124,8 +126,8 @@ export default function Header() {
                   </>
                 ) : (
                   <>
-                    <Link to="/login" onClick={() => setMenuOpen(false)} className="block font-oswald uppercase text-[#E4610F] text-base py-2 font-bold">Войти</Link>
-                    <Link to="/register" onClick={() => setMenuOpen(false)} className="block font-oswald uppercase text-[#19031D] text-base py-2 font-bold">Зарегистрироваться</Link>
+                    <Link to="/login" onClick={() => setMenuOpen(false)} className="block font-marmelad uppercase text-[#E4610F] text-base py-2 font-bold">Войти</Link>
+                    <Link to="/register" onClick={() => setMenuOpen(false)} className="block font-marmelad uppercase text-[#19031D] text-base py-2 font-bold">Зарегистрироваться</Link>
                   </>
                 )}
               </div>

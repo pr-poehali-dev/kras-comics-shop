@@ -27,14 +27,14 @@ export default function Orders() {
       <div className="brand-container py-6 flex-1">
         <Breadcrumbs crumbs={[{ label: "Учётная запись", href: "/profile" }, { label: "Мои заказы" }]} />
         <div className="max-w-2xl mt-8 mb-12">
-          <h1 className="font-oswald font-bold text-[#392F3B] text-3xl md:text-4xl mb-8">Мои заказы</h1>
+          <h1 className="font-marmelad font-bold text-[#392F3B] text-3xl md:text-4xl mb-8">Мои заказы</h1>
 
           {!hasOrders ? (
             <div className="text-center py-16">
               <Icon name="Package" size={48} className="text-[#cbbfce] mx-auto mb-4" />
-              <h2 className="font-oswald text-xl text-[#392F3B] mb-2">Заказов пока нет</h2>
-              <p className="text-[#756977] font-golos mb-6">Самое время выбрать что-нибудь интересное!</p>
-              <Link to="/shop" className="inline-block bg-[#E4610F] hover:bg-[#c9510c] text-white font-oswald font-bold uppercase px-8 py-3 rounded-lg transition-all">
+              <h2 className="font-marmelad text-xl text-[#392F3B] mb-2">Заказов пока нет</h2>
+              <p className="text-[#756977] font-snpro mb-6">Самое время выбрать что-нибудь интересное!</p>
+              <Link to="/shop" className="inline-block bg-[#E4610F] hover:bg-[#c9510c] text-white font-marmelad font-bold uppercase px-8 py-3 rounded-lg transition-all">
                 В магазин!
               </Link>
             </div>
@@ -46,12 +46,12 @@ export default function Orders() {
                   <div key={o.id} className="border border-[#e8e2ea] rounded-xl p-5 hover:border-[#E4610F]/50 transition-colors">
                     <div className="flex flex-wrap items-center justify-between gap-3">
                       <div>
-                        <span className="font-oswald font-bold text-[#392F3B] text-lg">#{o.id}</span>
-                        <p className="text-[#756977] font-golos text-sm mt-0.5">{o.date} · {o.items} товар{o.items > 1 ? "а" : ""}</p>
+                        <span className="font-marmelad font-bold text-[#392F3B] text-lg">#{o.id}</span>
+                        <p className="text-[#756977] font-snpro text-sm mt-0.5">{o.date} · {o.items} товар{o.items > 1 ? "а" : ""}</p>
                       </div>
                       <div className="flex items-center gap-3">
-                        <span className={`px-3 py-1 rounded-full font-golos text-xs font-medium ${s.cls}`}>{s.label}</span>
-                        <span className="font-oswald font-bold text-[#E4610F] text-lg">{o.total} ₽</span>
+                        <span className={`px-3 py-1 rounded-full font-snpro text-xs font-medium ${s.cls}`}>{s.label}</span>
+                        <span className="font-marmelad font-bold text-[#E4610F] text-lg">{o.total} ₽</span>
                       </div>
                     </div>
                   </div>

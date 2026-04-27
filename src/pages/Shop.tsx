@@ -28,7 +28,7 @@ export default function Shop() {
         {/* Header row: title+crumbs left, search right */}
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-5 mb-8">
           <div>
-            <h1 className="font-oswald font-bold text-[#392F3B] text-3xl md:text-4xl">Магазин</h1>
+            <h1 className="font-marmelad font-bold text-[#392F3B] text-3xl md:text-4xl">Магазин</h1>
             <Breadcrumbs crumbs={[{ label: "Магазин" }]} />
           </div>
           <div className="relative w-full md:max-w-sm">
@@ -38,7 +38,7 @@ export default function Shop() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Что будем искать?"
-              className="w-full pl-9 pr-4 py-3 border-2 border-[#e8e2ea] rounded-xl text-sm font-golos text-[#392F3B] placeholder-[#cbbfce] focus:outline-none focus:border-[#E4610F] transition-colors"
+              className="w-full pl-9 pr-4 py-3 border-2 border-[#e8e2ea] rounded-xl text-sm font-snpro text-[#392F3B] placeholder-[#cbbfce] focus:outline-none focus:border-[#E4610F] transition-colors"
             />
           </div>
         </div>
@@ -46,11 +46,11 @@ export default function Shop() {
         {filtered.length === 0 ? (
           <div className="text-center py-20">
             <Icon name="SearchX" size={48} className="text-[#cbbfce] mx-auto mb-4" />
-            <h2 className="font-oswald text-[#392F3B] text-xl mb-2">Поиск не дал результатов</h2>
-            <p className="text-[#756977] font-golos mb-6">Попробуйте другой запрос или посмотрите все книги</p>
+            <h2 className="font-marmelad text-[#392F3B] text-xl mb-2">Поиск не дал результатов</h2>
+            <p className="text-[#756977] font-snpro mb-6">Попробуйте другой запрос или посмотрите все книги</p>
             <button
               onClick={() => setSearch("")}
-              className="bg-[#E4610F] text-white px-6 py-2.5 rounded-lg font-oswald font-bold uppercase hover:bg-[#c9510c] transition-colors"
+              className="bg-[#E4610F] text-white px-6 py-2.5 rounded-lg font-marmelad font-bold uppercase hover:bg-[#c9510c] transition-colors"
             >
               Показать всё
             </button>

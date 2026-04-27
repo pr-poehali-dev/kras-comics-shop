@@ -42,15 +42,15 @@ export default function Index() {
         <div className="brand-container py-8 md:py-14">
           <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10">
             <div className="flex-1 order-2 md:order-1 text-center md:text-left">
-              <h1 className="font-oswald font-bold text-white text-3xl md:text-5xl leading-tight mb-3">
+              <h1 className="font-marmelad font-bold text-white text-3xl md:text-5xl leading-tight mb-3">
                 {current.title}
               </h1>
-              <p className="text-[#ccc0d0] font-golos text-base md:text-lg mb-6 max-w-sm mx-auto md:mx-0">
+              <p className="text-[#ccc0d0] font-snpro text-base md:text-lg mb-6 max-w-sm mx-auto md:mx-0">
                 {current.subtitle}
               </p>
               <Link
                 to={current.link}
-                className="inline-block bg-[#E4610F] hover:bg-[#c9510c] text-white font-oswald font-bold uppercase tracking-wide px-6 py-3 rounded transition-all hover:shadow-lg hover:-translate-y-0.5"
+                className="inline-block bg-[#E4610F] hover:bg-[#c9510c] text-white font-marmelad font-bold uppercase tracking-wide px-6 py-3 rounded transition-all hover:shadow-lg hover:-translate-y-0.5"
               >
                 {current.cta}
               </Link>
@@ -82,7 +82,7 @@ export default function Index() {
       {/* Products */}
       <section className="py-12 md:py-16">
         <div className="brand-container">
-          <h2 className="font-oswald font-bold text-[#392F3B] text-3xl md:text-4xl text-center mb-2">
+          <h2 className="font-marmelad font-bold text-[#392F3B] text-3xl md:text-4xl text-center mb-2">
             Наши книги
           </h2>
           <div className="w-12 h-1 bg-[#E4610F] mx-auto mb-10 rounded" />
@@ -96,7 +96,7 @@ export default function Index() {
           <div className="text-center mt-10">
             <Link
               to="/shop"
-              className="inline-block border-2 border-[#E4610F] text-[#E4610F] font-oswald font-bold uppercase tracking-wide px-8 py-3 rounded hover:bg-[#E4610F] hover:text-white transition-all"
+              className="inline-block border-2 border-[#E4610F] text-[#E4610F] font-marmelad font-bold uppercase tracking-wide px-8 py-3 rounded hover:bg-[#E4610F] hover:text-white transition-all"
             >
               Больше в магазине!
             </Link>
@@ -109,10 +109,10 @@ export default function Index() {
         <div className="brand-container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <div>
-              <h2 className="font-oswald font-bold text-white text-3xl md:text-4xl mb-6">
+              <h2 className="font-marmelad font-bold text-white text-3xl md:text-4xl mb-6">
                 Кто эти безумцы?
               </h2>
-              <div className="space-y-4 text-[#a895ad] font-golos leading-relaxed">
+              <div className="space-y-4 text-[#a895ad] font-snpro leading-relaxed">
                 <p>
                   <strong className="text-white">KRAS COMICS CULT</strong> — это небольшое самиздательство и
                   сообщество художников и авторов комиксов, которое базируется в Красноярске.
@@ -130,7 +130,7 @@ export default function Index() {
               </div>
               <Link
                 to="/about"
-                className="inline-flex items-center gap-2 mt-6 text-[#4FB282] font-oswald font-semibold uppercase tracking-wide hover:gap-3 transition-all"
+                className="inline-flex items-center gap-2 mt-6 text-[#4FB282] font-marmelad font-semibold uppercase tracking-wide hover:gap-3 transition-all"
               >
                 Узнать больше
                 <Icon name="ArrowRight" size={16} />
@@ -154,16 +154,16 @@ export default function Index() {
         <div className="brand-container">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div>
-              <h2 className="font-oswald font-bold text-white text-3xl md:text-4xl mb-3">Артбук EllyRox</h2>
-              <p className="text-[#e8d9f2] font-golos text-lg max-w-md">
+              <h2 className="font-marmelad font-bold text-white text-3xl md:text-4xl mb-3">Артбук EllyRox</h2>
+              <p className="text-[#e8d9f2] font-snpro text-lg max-w-md">
                 Коллекционное издание карманного артбука теперь со стендом! Уникальный авторский стиль — милое встречает странное.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3">
-              <Link to="/shop/ellyrox-001" className="bg-[#E4610F] hover:bg-[#c9510c] text-white font-oswald font-bold uppercase tracking-wide px-7 py-3 rounded transition-all hover:-translate-y-0.5 text-center">
+              <Link to="/shop/ellyrox-001" className="bg-[#E4610F] hover:bg-[#c9510c] text-white font-marmelad font-bold uppercase tracking-wide px-7 py-3 rounded transition-all hover:-translate-y-0.5 text-center">
                 Купить артбук
               </Link>
-              <Link to="/shop/ellyrox-001" className="border-2 border-white text-white font-oswald font-bold uppercase tracking-wide px-7 py-3 rounded transition-all hover:bg-white hover:text-[#8A5298] text-center">
+              <Link to="/shop/ellyrox-001" className="border-2 border-white text-white font-marmelad font-bold uppercase tracking-wide px-7 py-3 rounded transition-all hover:bg-white hover:text-[#8A5298] text-center">
                 Скачать комплект
               </Link>
             </div>

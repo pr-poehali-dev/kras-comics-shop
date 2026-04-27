@@ -36,8 +36,8 @@ export default function FAQ() {
       <div className="brand-container py-6 flex-1">
         <Breadcrumbs crumbs={[{ label: "FAQ" }]} />
         <div className="max-w-2xl mt-8 mb-12">
-          <h1 className="font-oswald font-bold text-[#392F3B] text-4xl md:text-5xl mb-2">Частые вопросы</h1>
-          <p className="text-[#756977] font-golos mb-8">Не нашли ответ? Пишите на <a href="mailto:KCC@bookscult.ru" className="text-[#E4610F] hover:underline">KCC@bookscult.ru</a></p>
+          <h1 className="font-marmelad font-bold text-[#392F3B] text-4xl md:text-5xl mb-2">Частые вопросы</h1>
+          <p className="text-[#756977] font-snpro mb-8">Не нашли ответ? Пишите на <a href="mailto:KCC@bookscult.ru" className="text-[#E4610F] hover:underline">KCC@bookscult.ru</a></p>
 
           <div className="space-y-2">
             {FAQS.map((item, i) => (
@@ -46,7 +46,7 @@ export default function FAQ() {
                   className="w-full flex items-center justify-between gap-4 p-5 text-left"
                   onClick={() => setOpen(open === i ? null : i)}
                 >
-                  <span className="font-oswald font-semibold text-[#392F3B] text-base leading-snug">{item.q}</span>
+                  <span className="font-marmelad font-semibold text-[#392F3B] text-base leading-snug">{item.q}</span>
                   <Icon
                     name="ChevronDown"
                     size={20}
@@ -54,7 +54,7 @@ export default function FAQ() {
                   />
                 </button>
                 {open === i && (
-                  <div className="px-5 pb-5 text-[#756977] font-golos leading-relaxed text-sm border-t border-[#f5f0f6]">
+                  <div className="px-5 pb-5 text-[#756977] font-snpro leading-relaxed text-sm border-t border-[#f5f0f6]">
                     <div className="pt-4">{item.a}</div>
                   </div>
                 )}

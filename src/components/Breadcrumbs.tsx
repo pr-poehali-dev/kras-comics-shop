@@ -8,7 +8,7 @@ interface Crumb {
 
 export default function Breadcrumbs({ crumbs }: { crumbs: Crumb[] }) {
   return (
-    <nav className="flex items-center gap-1 text-sm font-golos text-[#756977] flex-wrap">
+    <nav className="flex items-center gap-1 text-sm font-snpro text-[#756977] flex-wrap">
       <Link to="/" className="hover:text-[#E4610F] transition-colors">Главная</Link>
       {crumbs.map((c, i) => (
         <span key={i} className="flex items-center gap-1">

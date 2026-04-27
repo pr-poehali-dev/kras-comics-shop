@@ -17,6 +17,8 @@ export default {
     },
     extend: {
       fontFamily: {
+        marmelad: ["Marmelad", "sans-serif"],
+        snpro: ["SN Pro", "Golos Text", "sans-serif"],
         oswald: ["Oswald", "sans-serif"],
         golos: ["Golos Text", "sans-serif"],
       },

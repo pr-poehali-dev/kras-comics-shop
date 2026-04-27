@@ -36,7 +36,7 @@ export default function ProductCard({ product, showControls }: ProductCardProps)
           className="w-full aspect-[3/4] object-cover hover:scale-105 transition-transform duration-500"
         />
         {product.badge && (
-          <span className={`absolute top-3 left-3 ${BADGE_CLASSES[product.badge]} text-xs font-oswald font-bold uppercase px-2.5 py-1 rounded`}>
+          <span className={`absolute top-3 left-3 ${BADGE_CLASSES[product.badge]} text-xs font-marmelad font-bold uppercase px-2.5 py-1 rounded`}>
             {product.badge}
           </span>
         )}
@@ -47,17 +47,17 @@ export default function ProductCard({ product, showControls }: ProductCardProps)
         {/* Title + desc занимают весь оставшийся объём */}
         <div className="flex-1 flex flex-col gap-2">
           <Link to={`/shop/${product.slug}`}>
-            <h3 className="font-oswald font-semibold text-[#392F3B] text-base leading-tight hover:text-[#E4610F] transition-colors">
+            <h3 className="font-marmelad text-[#392F3B] text-base leading-tight hover:text-[#E4610F] transition-colors">
               {product.title}
             </h3>
           </Link>
           {product.shortDesc && (
-            <p className="text-[#756977] text-xs font-golos leading-snug">
+            <p className="text-[#756977] text-xs font-snpro leading-snug">
               {product.shortDesc}
             </p>
           )}
           {product.tags && product.tags.length > 0 && (
-            <p className="text-[#392F3B] text-xs font-golos leading-snug font-medium">
+            <p className="text-[#392F3B] text-xs font-snpro leading-snug font-medium">
               {product.tags.join(", ")}
             </p>
           )}
@@ -66,9 +66,9 @@ export default function ProductCard({ product, showControls }: ProductCardProps)
         {/* Price + action — всегда внизу карточки */}
         <div className="flex items-center justify-between">
           <div className="flex items-baseline gap-2">
-            <span className="font-oswald font-bold text-[#392F3B] text-lg">{product.price} ₽</span>
+            <span className="font-marmelad text-[#392F3B] text-lg">{product.price} ₽</span>
             {product.oldPrice && (
-              <span className="text-[#cbbfce] text-sm line-through font-golos">{product.oldPrice} ₽</span>
+              <span className="text-[#cbbfce] text-sm line-through font-snpro">{product.oldPrice} ₽</span>
             )}
           </div>
 
@@ -78,7 +78,7 @@ export default function ProductCard({ product, showControls }: ProductCardProps)
                 onClick={() => setQty(Math.max(1, qty - 1))}
                 className="w-7 h-7 rounded-full border border-[#e8e2ea] flex items-center justify-center text-[#392F3B] hover:bg-[#E4610F] hover:text-white hover:border-[#E4610F] transition-colors font-bold text-base"
               >−</button>
-              <span className="w-7 text-center font-oswald font-semibold text-[#392F3B] text-sm">{qty}</span>
+              <span className="w-7 text-center font-marmelad text-[#392F3B] text-sm">{qty}</span>
               <button
                 onClick={() => setQty(qty + 1)}
                 className="w-7 h-7 rounded-full border border-[#e8e2ea] flex items-center justify-center text-[#392F3B] hover:bg-[#E4610F] hover:text-white hover:border-[#E4610F] transition-colors font-bold text-base"
