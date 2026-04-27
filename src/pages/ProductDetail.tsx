@@ -18,7 +18,7 @@ export default function ProductDetail() {
   const { slug } = useParams<{ slug: string }>();
   const product = PRODUCTS.find((p) => p.slug === slug);
   const [added, setAdded] = useState(false);
-  const [qty, setQty] = useState(1);
+  const [activeImg, setActiveImg] = useState(0);
 
   if (!product) {
     return (
@@ -26,7 +26,7 @@ export default function ProductDetail() {
         <Header />
         <div className="flex-1 flex flex-col items-center justify-center gap-4">
           <h2 className="font-oswald text-2xl text-[#392F3B]">Товар не найден</h2>
-          <Link to="/shop" className="btn-primary px-6 py-2.5 rounded font-oswald font-bold uppercase">
+          <Link to="/shop" className="bg-[#E4610F] text-white px-6 py-2.5 rounded-lg font-oswald font-bold uppercase hover:bg-[#c9510c] transition-colors">
             Вернуться в магазин
           </Link>
         </div>
@@ -34,6 +34,9 @@ export default function ProductDetail() {
       </div>
     );
   }
+
+  // Генерируем несколько «слайдов» из одного изображения для демо
+  const images = [product.image, product.image, product.image];
 
   function handleAdd() {
     addToCart({ id: product!.id, slug: product!.slug, title: product!.title, price: product!.price, image: product!.image });
@@ -47,25 +50,54 @@ export default function ProductDetail() {
       <div className="brand-container py-6 flex-1">
         <Breadcrumbs crumbs={[{ label: "Магазин", href: "/shop" }, { label: product.title }]} />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-8">
-          {/* Image */}
-          <div className="flex justify-center">
-            <div className="relative">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-6">
+          {/* Left — image slider */}
+          <div className="flex flex-col gap-3">
+            {/* Main image */}
+            <div className="relative rounded-xl overflow-hidden bg-[#f5f0f6]">
               <img
-                src={product.image}
+                key={activeImg}
+                src={images[activeImg]}
                 alt={product.title}
-                className="max-w-full max-h-[500px] object-contain rounded-xl shadow-xl"
+                className="w-full aspect-[4/5] object-contain animate-scale-in"
               />
               {product.badge && (
                 <span className={`absolute top-3 left-3 ${BADGE_CLASSES[product.badge]} text-sm font-oswald font-bold uppercase px-3 py-1 rounded`}>
                   {product.badge}
                 </span>
               )}
+              {/* Prev/Next */}
+              <button
+                onClick={() => setActiveImg((i) => (i - 1 + images.length) % images.length)}
+                className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 flex items-center justify-center shadow hover:bg-white transition-colors"
+              >
+                <Icon name="ChevronLeft" size={18} className="text-[#392F3B]" />
+              </button>
+              <button
+                onClick={() => setActiveImg((i) => (i + 1) % images.length)}
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 flex items-center justify-center shadow hover:bg-white transition-colors"
+              >
+                <Icon name="ChevronRight" size={18} className="text-[#392F3B]" />
+              </button>
+            </div>
+            {/* Thumbnails */}
+            <div className="flex gap-2">
+              {images.map((img, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveImg(i)}
+                  className={`w-16 h-20 rounded-lg overflow-hidden border-2 transition-all ${
+                    i === activeImg ? "border-[#E4610F]" : "border-transparent hover:border-[#e8e2ea]"
+                  }`}
+                >
+                  <img src={img} alt="" className="w-full h-full object-cover" />
+                </button>
+              ))}
             </div>
           </div>
 
-          {/* Info */}
-          <div className="flex flex-col gap-5">
+          {/* Right — info */}
+          <div className="flex flex-col gap-4">
             <h1 className="font-oswald font-bold text-[#392F3B] text-3xl md:text-4xl leading-tight">
               {product.title}
             </h1>
@@ -78,50 +110,40 @@ export default function ProductDetail() {
               )}
             </div>
 
-            {/* Add to cart */}
-            <div className="flex items-center gap-3">
-              <div className="flex items-center border border-[#e8e2ea] rounded-lg overflow-hidden">
-                <button onClick={() => setQty(Math.max(1, qty - 1))} className="px-3 py-2 text-[#392F3B] hover:bg-[#f5f0f6] transition-colors text-xl font-bold">−</button>
-                <span className="px-4 py-2 font-oswald font-semibold text-[#392F3B] min-w-[3rem] text-center">{qty}</span>
-                <button onClick={() => setQty(qty + 1)} className="px-3 py-2 text-[#392F3B] hover:bg-[#f5f0f6] transition-colors text-xl font-bold">+</button>
-              </div>
-              <button
-                onClick={handleAdd}
-                className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-lg font-oswald font-bold uppercase tracking-wide text-white transition-all ${
-                  added ? "bg-[#4FB282]" : "bg-[#E4610F] hover:bg-[#c9510c] hover:-translate-y-0.5"
-                }`}
-              >
-                <Icon name={added ? "Check" : "ShoppingCart"} size={18} />
-                {added ? "Добавлено!" : "В корзину"}
-              </button>
-            </div>
+            {/* Add to cart button */}
+            <button
+              onClick={handleAdd}
+              className={`flex items-center justify-center gap-2 py-3 px-8 rounded-xl font-oswald font-bold uppercase tracking-wide text-[#19031D] border-2 transition-all w-fit ${
+                added
+                  ? "bg-[#4FB282] border-[#4FB282] text-white"
+                  : "bg-[#FFEC5C] border-[#FFEC5C] hover:bg-[#e8d700] hover:border-[#e8d700]"
+              }`}
+            >
+              <Icon name={added ? "Check" : "ShoppingCart"} size={18} />
+              {added ? "Добавлено!" : "В корзину"}
+            </button>
 
-            {/* Description */}
-            <div className="bg-[#faf8fb] rounded-xl p-5">
-              <p className="text-[#756977] font-golos leading-relaxed">{product.fullDesc}</p>
+            {/* Full description */}
+            <div className="text-[#756977] font-golos leading-relaxed text-sm">
+              <p>{product.fullDesc}</p>
             </div>
 
             {/* Authors */}
             {product.authors.length > 0 && (
               <div>
-                <h3 className="font-oswald font-semibold text-[#392F3B] text-base mb-2">Внутри вас ждут истории от:</h3>
-                <div className="flex flex-wrap gap-2">
-                  {product.authors.map((a) => (
-                    <span key={a} className="bg-[#f5f0f6] text-[#8A5298] font-golos text-sm px-3 py-1 rounded-full">{a}</span>
-                  ))}
-                </div>
+                <p className="font-golos text-[#392F3B] font-medium mb-1">Внутри вас ждут истории от:</p>
+                <p className="font-golos text-sm text-[#E4610F]">
+                  {product.authors.join(", ")}
+                </p>
               </div>
             )}
 
             {/* Specs */}
             <div>
-              <h3 className="font-oswald font-semibold text-[#392F3B] text-base mb-2">Характеристики:</h3>
+              <p className="font-golos text-[#392F3B] font-medium mb-2">Характеристики:</p>
               <ul className="space-y-1">
                 {product.specs.map((s) => (
-                  <li key={s} className="flex items-center gap-2 text-[#756977] font-golos text-sm">
-                    <Icon name="ChevronRight" size={14} className="text-[#E4610F] shrink-0" />
-                    {s}
-                  </li>
+                  <li key={s} className="text-[#756977] font-golos text-sm">— {s}</li>
                 ))}
               </ul>
             </div>
@@ -132,13 +154,9 @@ export default function ProductDetail() {
             </p>
 
             {/* Tags */}
-            <div className="flex flex-wrap gap-2">
-              {product.tags.map((t) => (
-                <span key={t} className="border border-[#e8e2ea] text-[#756977] font-golos text-xs px-3 py-1 rounded-full hover:border-[#E4610F] hover:text-[#E4610F] transition-colors cursor-default">
-                  #{t}
-                </span>
-              ))}
-            </div>
+            <p className="text-[#756977] font-golos text-sm">
+              <span className="text-[#392F3B] font-medium">Теги:</span> {product.tags.join(", ")}
+            </p>
           </div>
         </div>
       </div>

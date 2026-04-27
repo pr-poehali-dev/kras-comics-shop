@@ -2,75 +2,106 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import Icon from "@/components/ui/icon";
+import { PRODUCTS } from "@/data/products";
 
 const TEAM = [
-  { name: "Дима Иванов", role: "Автор, основатель", emoji: "✏️" },
-  { name: "Иван Диманов", role: "Иллюстратор", emoji: "🎨" },
-  { name: "Диван Иванов", role: "Автор обложек", emoji: "🖼️" },
+  { name: "Дима Иванов", role: "Идейный вдохновитель и основатель", desc: "Придумывает миры и следит за тем, чтобы всё это вообще выходило", color: "#c4a8d4" },
+  { name: "Иван Диманов", role: "Злобный клон, который ни разу не пытался захватить издательство", desc: "Рисует и иногда пишет что-то умное", color: "#8fd9b6" },
+  { name: "Диван Иванов", role: "Он ещё не определился", desc: "Отвечает за обложки и эстетику проекта", color: "#FFEC5C" },
+  { name: "Дима Иванов", role: "Идейный вдохновитель и основатель", desc: "Дублирующий состав на случай непредвиденных обстоятельств", color: "#c4a8d4" },
 ];
+
+// Все изображения из продуктов для галереи
+const GALLERY_IMAGES = PRODUCTS.map((p) => p.image);
 
 export default function About() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
-      <div className="brand-container py-6 flex-1">
-        <Breadcrumbs crumbs={[{ label: "О нас" }]} />
 
-        <div className="max-w-3xl mt-8">
-          <h1 className="font-oswald font-bold text-[#392F3B] text-4xl md:text-5xl mb-6">О проекте</h1>
-          <div className="space-y-5 text-[#756977] font-golos leading-relaxed text-base">
-            <p>
-              <strong className="text-[#392F3B]">KRAS COMICS CULT</strong> — небольшое самиздательство
-              и сообщество художников и авторов комиксов, базирующееся в Красноярске.
-            </p>
-            <p>
-              Мы выпускаем оригинальные книжки, которые и сами хотели бы почитать.
-              Проводим лекции, мастер-классы и устраиваем совместные сеансы рисования.
-              Участвуем в фестивалях по всей России.
-            </p>
-            <p>
-              Наши книги можно купить здесь, а также в независимых книжных и магазинах
-              комиксов — в Красноярске, Москве, Санкт-Петербурге и Новосибирске.
-            </p>
+      {/* Top section: text + gallery side by side */}
+      <div className="brand-container py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+          {/* Left: text */}
+          <div>
+            <h1 className="font-oswald font-bold text-[#392F3B] text-4xl md:text-5xl mb-2">О нас</h1>
+            <Breadcrumbs crumbs={[{ label: "О нас" }]} />
+
+            <div className="space-y-4 text-[#756977] font-golos leading-relaxed text-sm mt-6">
+              <p>
+                <strong className="text-[#392F3B]">KRAS COMICS CULT</strong> — это небольшое самиздательство и
+                сообщество художников и авторов комиксов, которое базируется в Красноярске.
+                Выпускаем оригинальные книжки, которые и сами хотели бы почитать, проводим
+                лекции и устраиваем совместные сеансы рисования!
+              </p>
+              <p>
+                Наши книги можно купить только на этом сайте, в независимых книжных
+                и магазинах комиксов, а также на фестивалях, в которых мы участвуем.
+              </p>
+              <p>
+                Этот сайт — ещё один шаг на пути превращения в полноценное и самое
+                крутое издательство. Это цель и мечта!
+              </p>
+            </div>
+
+            {/* Social icons */}
+            <div className="mt-6">
+              <p className="font-golos text-[#392F3B] font-medium text-sm mb-3">Наши соцсети:</p>
+              <div className="flex items-center gap-4">
+                <a href="#" aria-label="Telegram" className="text-[#392F3B] hover:text-[#E4610F] transition-colors">
+                  <Icon name="Send" size={22} />
+                </a>
+                <a href="#" aria-label="YouTube" className="text-[#392F3B] hover:text-[#E4610F] transition-colors">
+                  <Icon name="Youtube" size={22} />
+                </a>
+                <a href="#" aria-label="VK" className="text-[#392F3B] hover:text-[#E4610F] transition-colors">
+                  <Icon name="Users" size={22} />
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
 
-        {/* Social */}
-        <div className="mt-12">
-          <h2 className="font-oswald font-bold text-[#392F3B] text-2xl mb-5">Мы в соцсетях</h2>
-          <div className="flex flex-wrap gap-4">
-            {[
-              { label: "Telegram", icon: "Send", color: "#229ED9" },
-              { label: "YouTube", icon: "Youtube", color: "#FF0000" },
-              { label: "ВКонтакте", icon: "Users", color: "#4A76A8" },
-            ].map((s) => (
-              <a
-                key={s.label}
-                href="#"
-                className="flex items-center gap-3 px-5 py-3 border border-[#e8e2ea] rounded-xl hover:border-[#E4610F] hover:shadow-md transition-all group"
+          {/* Right: masonry-style gallery */}
+          <div className="grid grid-cols-3 gap-2">
+            {GALLERY_IMAGES.slice(0, 9).map((img, i) => (
+              <div
+                key={i}
+                className={`overflow-hidden rounded-lg ${i === 4 ? "col-span-2 row-span-2" : ""}`}
               >
-                <Icon name={s.icon as "Send"} size={20} style={{ color: s.color }} />
-                <span className="font-oswald font-semibold text-[#392F3B] group-hover:text-[#E4610F] transition-colors">{s.label}</span>
-                <Icon name="ExternalLink" size={14} className="text-[#cbbfce]" />
-              </a>
-            ))}
-          </div>
-        </div>
-
-        {/* Team */}
-        <div className="mt-14 mb-10">
-          <h2 className="font-oswald font-bold text-[#392F3B] text-2xl mb-6">Команда безумцев</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-            {TEAM.map((m) => (
-              <div key={m.name} className="border border-[#e8e2ea] rounded-xl p-6 text-center hover:border-[#8A5298] hover:shadow-md transition-all">
-                <div className="text-5xl mb-4">{m.emoji}</div>
-                <h3 className="font-oswald font-bold text-[#392F3B] text-lg">{m.name}</h3>
-                <p className="text-[#756977] font-golos text-sm mt-1">{m.role}</p>
+                <img
+                  src={img}
+                  alt=""
+                  className="w-full h-full object-cover aspect-square hover:scale-110 transition-transform duration-500"
+                />
               </div>
             ))}
           </div>
         </div>
       </div>
+
+      {/* Team section — dark bg */}
+      <section style={{ backgroundColor: "#19031D" }} className="py-14">
+        <div className="brand-container">
+          <h2 className="font-oswald font-bold text-white text-3xl text-center mb-10">Команда</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {TEAM.map((m, i) => (
+              <div key={i} className="rounded-xl overflow-hidden flex flex-col" style={{ backgroundColor: "#2a0d30" }}>
+                {/* Color block (аватар-заглушка) */}
+                <div
+                  className="w-full aspect-square"
+                  style={{ backgroundColor: m.color }}
+                />
+                {/* Info */}
+                <div className="p-4">
+                  <h3 className="font-oswald font-bold text-white text-base">{m.name}</h3>
+                  <p className="text-[#a895ad] font-golos text-xs mt-1 leading-snug">{m.role}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );

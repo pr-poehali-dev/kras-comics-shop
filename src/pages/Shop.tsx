@@ -24,19 +24,21 @@ export default function Shop() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
-      <div className="brand-container py-6 flex-1">
-        <Breadcrumbs crumbs={[{ label: "Магазин" }]} />
-
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mt-6 mb-8">
-          <h1 className="font-oswald font-bold text-[#392F3B] text-3xl md:text-4xl">Магазин</h1>
-          <div className="relative max-w-xs w-full">
+      <div className="brand-container py-8 flex-1">
+        {/* Header row: title+crumbs left, search right */}
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-5 mb-8">
+          <div>
+            <h1 className="font-oswald font-bold text-[#392F3B] text-3xl md:text-4xl">Магазин</h1>
+            <Breadcrumbs crumbs={[{ label: "Магазин" }]} />
+          </div>
+          <div className="relative w-full md:max-w-sm">
             <Icon name="Search" size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#cbbfce]" />
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Поиск по названию, тегам…"
-              className="w-full pl-9 pr-4 py-2.5 border border-[#e8e2ea] rounded-lg text-sm font-golos text-[#392F3B] placeholder-[#cbbfce] focus:outline-none focus:border-[#E4610F] transition-colors"
+              placeholder="Что будем искать?"
+              className="w-full pl-9 pr-4 py-3 border-2 border-[#e8e2ea] rounded-xl text-sm font-golos text-[#392F3B] placeholder-[#cbbfce] focus:outline-none focus:border-[#E4610F] transition-colors"
             />
           </div>
         </div>
@@ -48,13 +50,14 @@ export default function Shop() {
             <p className="text-[#756977] font-golos mb-6">Попробуйте другой запрос или посмотрите все книги</p>
             <button
               onClick={() => setSearch("")}
-              className="btn-primary px-6 py-2.5 rounded font-oswald font-bold uppercase"
+              className="bg-[#E4610F] text-white px-6 py-2.5 rounded-lg font-oswald font-bold uppercase hover:bg-[#c9510c] transition-colors"
             >
               Показать всё
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+          /* grid-rows-* — карточки в ряду выравниваются по самой высокой */
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 items-stretch">
             {filtered.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}

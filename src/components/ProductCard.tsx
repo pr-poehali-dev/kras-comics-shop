@@ -28,36 +28,45 @@ export default function ProductCard({ product, showControls }: ProductCardProps)
 
   return (
     <div className="product-card h-full flex flex-col">
-      {/* Image */}
-      <Link to={`/shop/${product.slug}`} className="block relative overflow-hidden bg-[#f5f0f6]">
+      {/* Image — фиксированное соотношение */}
+      <Link to={`/shop/${product.slug}`} className="block relative overflow-hidden bg-[#f5f0f6] shrink-0">
         <img
           src={product.image}
           alt={product.title}
           className="w-full aspect-[3/4] object-cover hover:scale-105 transition-transform duration-500"
         />
         {product.badge && (
-          <span className={`absolute top-2 left-2 ${BADGE_CLASSES[product.badge]} text-xs font-oswald font-bold uppercase px-2 py-0.5 rounded`}>
+          <span className={`absolute top-3 left-3 ${BADGE_CLASSES[product.badge]} text-xs font-oswald font-bold uppercase px-2.5 py-1 rounded`}>
             {product.badge}
           </span>
         )}
       </Link>
 
-      {/* Content */}
-      <div className="p-4 flex flex-col flex-1 gap-2">
-        <Link to={`/shop/${product.slug}`}>
-          <h3 className="font-oswald font-semibold text-[#392F3B] text-base leading-tight hover:text-[#E4610F] transition-colors">
-            {product.title}
-          </h3>
-        </Link>
-        {product.shortDesc && (
-          <p className="text-[#756977] text-xs font-golos leading-snug line-clamp-2 flex-1">
-            {product.shortDesc}
-          </p>
-        )}
+      {/* Content — растягивается чтобы карточки в ряду имели одинаковую высоту */}
+      <div className="flex flex-col flex-1 p-4 gap-4">
+        {/* Title + desc занимают весь оставшийся объём */}
+        <div className="flex-1 flex flex-col gap-2">
+          <Link to={`/shop/${product.slug}`}>
+            <h3 className="font-oswald font-semibold text-[#392F3B] text-base leading-tight hover:text-[#E4610F] transition-colors">
+              {product.title}
+            </h3>
+          </Link>
+          {product.shortDesc && (
+            <p className="text-[#756977] text-xs font-golos leading-snug">
+              {product.shortDesc}
+            </p>
+          )}
+          {product.tags && product.tags.length > 0 && (
+            <p className="text-[#392F3B] text-xs font-golos leading-snug font-medium">
+              {product.tags.join(", ")}
+            </p>
+          )}
+        </div>
 
-        <div className="flex items-center justify-between mt-auto pt-2">
+        {/* Price + action — всегда внизу карточки */}
+        <div className="flex items-center justify-between">
           <div className="flex items-baseline gap-2">
-            <span className="font-oswald font-bold text-[#E4610F] text-lg">{product.price} ₽</span>
+            <span className="font-oswald font-bold text-[#392F3B] text-lg">{product.price} ₽</span>
             {product.oldPrice && (
               <span className="text-[#cbbfce] text-sm line-through font-golos">{product.oldPrice} ₽</span>
             )}
@@ -67,23 +76,22 @@ export default function ProductCard({ product, showControls }: ProductCardProps)
             <div className="flex items-center gap-1">
               <button
                 onClick={() => setQty(Math.max(1, qty - 1))}
-                className="w-7 h-7 rounded border border-[#e8e2ea] flex items-center justify-center text-[#392F3B] hover:bg-[#E4610F] hover:text-white hover:border-[#E4610F] transition-colors text-lg font-bold"
+                className="w-7 h-7 rounded-full border border-[#e8e2ea] flex items-center justify-center text-[#392F3B] hover:bg-[#E4610F] hover:text-white hover:border-[#E4610F] transition-colors font-bold text-base"
               >−</button>
-              <span className="w-7 text-center font-oswald font-semibold text-[#392F3B]">{qty}</span>
+              <span className="w-7 text-center font-oswald font-semibold text-[#392F3B] text-sm">{qty}</span>
               <button
                 onClick={() => setQty(qty + 1)}
-                className="w-7 h-7 rounded border border-[#e8e2ea] flex items-center justify-center text-[#392F3B] hover:bg-[#E4610F] hover:text-white hover:border-[#E4610F] transition-colors text-lg font-bold"
+                className="w-7 h-7 rounded-full border border-[#e8e2ea] flex items-center justify-center text-[#392F3B] hover:bg-[#E4610F] hover:text-white hover:border-[#E4610F] transition-colors font-bold text-base"
               >+</button>
             </div>
           ) : (
             <button
               onClick={handleAdd}
-              className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${
-                added ? "bg-[#4FB282]" : "bg-[#E4610F] hover:bg-[#c9510c]"
-              } text-white`}
+              style={{ backgroundColor: added ? "#4FB282" : "#FFEC5C" }}
+              className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-105"
               aria-label="В корзину"
             >
-              <Icon name={added ? "Check" : "ShoppingCart"} size={16} />
+              <Icon name={added ? "Check" : "ShoppingCart"} size={18} className="text-[#19031D]" />
             </button>
           )}
         </div>
